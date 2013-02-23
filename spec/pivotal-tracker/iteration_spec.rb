@@ -71,6 +71,18 @@ describe PivotalTracker::Iteration do
     end
   end
     
+  describe ".stories" do
+    before do
+      @iteration = PivotalTracker::Iteration.current(@project)
+    end
+    it "There should be 1 story in the current iteration" do
+      @iteration.stories.should be_a(Array)
+      @iteration.stories.length.should eq(1)
+      @iteration.stories.first.description.should eq("Generic description")
+      @iteration.stories.first.estimate.should eq (2)
+    end
+  end
+
 
 end
 
